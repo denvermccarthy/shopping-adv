@@ -1,11 +1,14 @@
 import Header from './components/Layout/Header';
+import { ListProvider } from './context/ListContext';
 import ListView from './views/List/ListView';
 
 export default function App() {
   return (
     <>
-      <Header />
-      <ListView />
+      <ListProvider>
+        <Header />
+        <ListView />
+      </ListProvider>
     </>
   );
 }

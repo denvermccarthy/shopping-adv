@@ -1,3 +1,13 @@
+import Header from './components/Layout/Header';
+import Input from './components/List/Input';
+import ListView from './views/List/ListView';
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <Header />
+      <Input />
+      <ListView />
+    </>
+  );
 }

@@ -3,8 +3,8 @@ import Item from '../../components/List/Item';
 import { useList } from '../../context/ListContext';
 
 export default function ListView() {
-  const [text, setText] = useState('');
-  const { items, deleteHandler, updateHandler, addItem } = useList();
+  const { items, deleteHandler, updateHandler, addItem, text, setText } =
+    useList();
   return (
     <div>
       ListView

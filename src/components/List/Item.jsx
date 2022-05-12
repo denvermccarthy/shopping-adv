@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './item.css';
 
 export default function Item({ item, updateHandler, deleteHandler }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -28,9 +29,9 @@ export default function Item({ item, updateHandler, deleteHandler }) {
     <div>
       <input
         type="checkbox"
-        onClick={() => updateHandler({ ...item, done: e.target.checked })}
+        onClick={(e) => updateHandler({ ...item, done: e.target.checked })}
       />
-      {item.name}
+      <p className={item.done ? styles.completed : undefined}>{item.name}</p>
       <button onClick={() => deleteHandler(item)}>Delete</button>
       <button onClick={() => setIsEditing(true)}>Edit</button>
     </div>

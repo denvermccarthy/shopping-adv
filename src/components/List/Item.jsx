@@ -5,14 +5,16 @@ export default function Item({ item, updateHandler, deleteHandler }) {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(item.name);
   return isEditing ? (
-    <div>
+    <div aria-label={`${item.name}`}>
       <input
+        defaultChecked={item.done}
         type="checkbox"
         onClick={(e) => updateHandler({ ...item, done: e.target.checked })}
       />
       <input
         type="text"
         value={name}
+        aria-label="edit -"
         onChange={(e) => setName(e.target.value)}
       />
       <button onClick={() => deleteHandler(item)}>Delete</button>
@@ -28,12 +30,18 @@ export default function Item({ item, updateHandler, deleteHandler }) {
   ) : (
     <div>
       <input
+        defaultChecked={item.done}
         type="checkbox"
         onClick={(e) => updateHandler({ ...item, done: e.target.checked })}
       />
       <p className={item.done ? styles.completed : undefined}>{item.name}</p>
       <button onClick={() => deleteHandler(item)}>Delete</button>
-      <button onClick={() => setIsEditing(true)}>Edit</button>
+      <button
+        onClick={() => setIsEditing(true)}
+        aria-label={`${item.name} Edit Button`}
+      >
+        Edit
+      </button>
     </div>
   );
 }

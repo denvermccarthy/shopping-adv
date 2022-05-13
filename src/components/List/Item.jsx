@@ -14,10 +14,15 @@ export default function Item({ item, updateHandler, deleteHandler }) {
       <input
         type="text"
         value={name}
-        aria-label="edit -"
+        aria-label={`edit ${item.name}`}
         onChange={(e) => setName(e.target.value)}
       />
-      <button onClick={() => deleteHandler(item)}>Delete</button>
+      <button
+        aria-label={`delete ${item.name}`}
+        onClick={() => deleteHandler(item)}
+      >
+        Delete
+      </button>
       <button
         onClick={() => {
           updateHandler({ ...item, name });
@@ -35,7 +40,12 @@ export default function Item({ item, updateHandler, deleteHandler }) {
         onClick={(e) => updateHandler({ ...item, done: e.target.checked })}
       />
       <p className={item.done ? styles.completed : undefined}>{item.name}</p>
-      <button onClick={() => deleteHandler(item)}>Delete</button>
+      <button
+        aria-label={`delete ${item.name}`}
+        onClick={() => deleteHandler(item)}
+      >
+        Delete
+      </button>
       <button
         onClick={() => setIsEditing(true)}
         aria-label={`${item.name} Edit Button`}
